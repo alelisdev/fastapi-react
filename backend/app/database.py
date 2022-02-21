@@ -1,6 +1,19 @@
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 
+# SQL connection
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.schema import Column
+from sqlalchemy.types import String, Integer
+
+DATABASE_URL = "mysql+mysqlconnector://root:root@localhost:3306/fastapi"
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+Base = declarative_base()
+
+#MongoDB Connection
 MONGO_DETAILS = "mongodb://localhost:27017"
 
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DETAILS)
@@ -11,8 +24,6 @@ user_collection = database.get_collection("user_collection")
 
 
 # helpers
-
-
 def user_helper(user) -> dict:
     return {
         "id": str(user["_id"]),
