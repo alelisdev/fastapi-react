@@ -102,7 +102,7 @@ async def signup( body: dict ) -> dict:
 #     user['password'] = password
 #     newUser = jsonable_encoder(user)
 
-#     exist = curd.get_user_by_username(db, email=newUser['email'])
+#     exist = curd.get_user_by_email(db, email=newUser['email'])
 #     if exist:
 #         pass
 #     else:

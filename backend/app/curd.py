@@ -3,7 +3,7 @@ import app.schema  as schema
 import app.model  as model
 
 
-def get_user_by_username(db: Session, email: str):
+def get_user_by_email(db: Session, email: str):
     return db.query(model.User).filter(model.User.email == email).first()
 
 def create_user(db: Session, user: schema.UserCreate):
