@@ -1,3 +1,4 @@
+# need for only SQL Database
 from sqlalchemy.orm import Session
 import app.schema  as schema
 import app.model  as model

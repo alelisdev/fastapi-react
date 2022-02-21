@@ -37,7 +37,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
 # SQL Operation
 def get_db():
     db = None
@@ -46,7 +45,6 @@ def get_db():
         yield db
     finally:
         db.close()
-
 
 # Our root endpoint
 @app.get("/")
@@ -59,11 +57,8 @@ async def signup( body: dict ) -> dict:
     profileObj = body['profileObj']
     email = profileObj['email']
     fullname = profileObj['name']
-    
     hashfunc = Hash()
-    password = hashfunc.bcrypt('123456789')
-    # tokenObj = body['tokenObj']
-    # token = tokenObj['access_token']
+    password = hashfunc.bcrypt('123456789') #default password 123456789
 
     exist = await retrieve_user(email=email)
     if exist:
@@ -82,8 +77,6 @@ async def signup( body: dict ) -> dict:
     data['fullname'] = fullname
     jwtToken = create_access_token(data)
     return {"jwtToken": jwtToken }
-
-
 
 # Signup endpoint with the POST method in SQL
 # @app.post("/signup/google")

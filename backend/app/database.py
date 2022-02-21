@@ -21,7 +21,7 @@ database = client.users
 user_collection = database.get_collection("user_collection")
 
 
-# helpers
+# MonogDB helpers
 def user_helper(user) -> dict:
     return {
         "id": str(user["_id"]),
@@ -37,7 +37,7 @@ async def retrieve_users():
     return users
 
 
-# Add a new user into to the database
+# Add a new user into to the MongoDB database
 async def add_user(user_data: dict) -> dict:
     user = await user_collection.insert_one(user_data)
     new_user = await user_collection.find_one({"_id": user.inserted_id})
@@ -66,7 +66,7 @@ async def update_user(id: str, data: dict):
         return False
 
 
-# Delete a user from the database
+# Delete a user from the MongoDB database
 async def delete_user(id: str):
     user = await user_collection.find_one({"_id": ObjectId(id)})
     if user:
