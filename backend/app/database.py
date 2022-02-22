@@ -5,8 +5,6 @@ from bson.objectid import ObjectId
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.schema import Column
-from sqlalchemy.types import String, Integer
 
 DATABASE_URL = "mysql+mysqlconnector://root:root@localhost:3306/fastapi"
 engine = create_engine(DATABASE_URL)

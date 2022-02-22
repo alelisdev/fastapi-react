@@ -2,7 +2,6 @@ from datetime import datetime, timedelta
 from jose import JWTError, jwt
 # from app.api import TokenData
 
-
 SECRET_KEY = "fastapisecretkey"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
