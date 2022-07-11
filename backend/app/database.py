@@ -20,7 +20,6 @@ database = client.users
 
 user_collection = database.get_collection("user_collection")
 
-
 # MonogDB helpers
 def user_helper(user) -> dict:
     return {
@@ -43,13 +42,11 @@ async def add_user(user_data: dict) -> dict:
     new_user = await user_collection.find_one({"_id": user.inserted_id})
     return user_helper(new_user)
 
-
 # Retrieve a user with a matching ID
 async def retrieve_user(email: str) -> dict:
     user = await user_collection.find_one({"email": email})
     if user:
         return user_helper(user)
-
 
 # Update a user with a matching ID
 async def update_user(id: str, data: dict):
@@ -64,7 +61,6 @@ async def update_user(id: str, data: dict):
         if updated_user:
             return True
         return False
-
 
 # Delete a user from the MongoDB database
 async def delete_user(id: str):
